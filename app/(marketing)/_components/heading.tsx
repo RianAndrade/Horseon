@@ -33,7 +33,7 @@ export const Heading = () => {
       </h3>
       <Button>
         Enter Horse
-        <ArrowRight />
+        <ArrowRight className="h-4 w-4 ml-2" />
       </Button>
     </div>
   );
