@@ -28,7 +28,7 @@ export const Heroes = () => {
           md:w-[500px]"
         >
           <Image
-            src="/heroes.png"
+            src="/heroes-white.png"
             fill
             className="object-contain"
             alt="Documento"
