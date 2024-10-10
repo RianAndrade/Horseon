@@ -18,8 +18,21 @@ export const Logo = () => {
       gap-x-2
       "
     >
-      <Image src="/logo.png" alt="logo" height="40" width="40" />
+      <Image
+        src="/logo.png"
+        alt="logo"
+        height="40"
+        width="40"
+        className="dark:hidden"
+      />
       <p className={cn("font-semibold", font.className)}>Horseon</p>
+      <Image
+        src="/logo.png"
+        alt="logo"
+        height="40"
+        width="40"
+        className="hidden dark:block"
+      />
     </div>
   );
 };
