@@ -3,9 +3,12 @@
 import { useConvexAuth } from "convex/react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { Spinner } from "@/components/spinner";
+import Link from "next/link";
+import { SignInButton } from "@clerk/clerk-react";
 
 export const Heading = () => {
-  const {} = useConvexAuth();
+  const { isAuthenticated, isLoading } = useConvexAuth();
   return (
     <div
       className="
@@ -33,10 +36,27 @@ export const Heading = () => {
         Horseon is the connected workspaca where <br /> better, faster work
         happens.
       </h3>
-      <Button>
-        Enter Horse
-        <ArrowRight className="h-4 w-4 ml-2" />
-      </Button>
+      {isLoading && (
+        <div className="w-full flex items-center justify-center">
+          <Spinner size="lg" />
+        </div>
+      )}
+      {isAuthenticated && !isLoading && (
+        <Button asChild>
+          <Link href="/documents">
+            Enter Horse
+            <ArrowRight className="h-4 w-4 ml-2" />
+          </Link>
+        </Button>
+      )}
+      {!isAuthenticated && !isLoading && (
+        <SignInButton>
+          <Button>
+            Get Horseon free
+            <ArrowRight className="h-4 w-4 ml-2" />
+          </Button>
+        </SignInButton>
+      )}
     </div>
   );
 };
