@@ -1,9 +1,11 @@
 "use client";
 
+import { useConvexAuth } from "convex/react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 
 export const Heading = () => {
+  const {} = useConvexAuth();
   return (
     <div
       className="
