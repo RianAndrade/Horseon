@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import { useParams } from "next/navigation";
 import { ImageIcon, X } from "lucide-react";
@@ -10,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { useConverImage } from "@/hooks/use-cover-image";
 import { api } from "@/convex/_generated/api";
 import { Id } from "@/convex/_generated/dataModel";
-import { useEdgeStore } from "@/lib/edgestore";
+
 import { Skeleton } from "@/components//ui/skeleton";
 
 interface CoverProps {
@@ -19,16 +17,12 @@ interface CoverProps {
 }
 
 export function Cover({ url, preview }: CoverProps) {
-  const { edgestore } = useEdgeStore();
   const params = useParams();
   const coverIamge = useConverImage();
   const removeCoverImage = useMutation(api.documents.removeCoverImage);
 
   const onRemove = async () => {
     if (url) {
-      await edgestore.publicFiles.delete({
-        url: url,
-      });
     }
     removeCoverImage({
       id: params.documentId as Id<"documents">,
