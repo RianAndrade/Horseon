@@ -173,7 +173,6 @@ export function Navigation() {
               isSearch
               onClick={search.onOpen}
             />
-            <Item label="Settings" icon={Settings} onClick={settings.onOpen} />
             <Item onClick={handleCreate} label="New page" icon={PlusCircle} />
           </div>
           <div className="mt-4">
