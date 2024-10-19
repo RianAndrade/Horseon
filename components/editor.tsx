@@ -4,14 +4,22 @@ import { BlockNoteEditor, PartialBlock } from "@blocknote/core";
 import { BlockNoteView } from "@blocknote/mantine";
 import { useCreateBlockNote } from "@blocknote/react";
 import "@blocknote/core/style.css";
+import "@blocknote/mantine/style.css";
 import { useTheme } from "next-themes";
+
+// Exporta a função App como uma exportação nomeada
+export function App() {
+  const editor = useCreateBlockNote();
+  return <BlockNoteView editor={editor} />;
+}
 
 interface EditorProps {
   onChange: (value: string) => void;
   initialContent?: string;
 }
 
-function Editor({ onChange, initialContent }: EditorProps) {
+// Mantém o Editor como exportação padrão
+export default function Editor({ onChange, initialContent }: EditorProps) {
   const { resolvedTheme } = useTheme();
 
   const editor: BlockNoteEditor = useCreateBlockNote({
@@ -32,5 +40,3 @@ function Editor({ onChange, initialContent }: EditorProps) {
     </div>
   );
 }
-
-export default Editor;
